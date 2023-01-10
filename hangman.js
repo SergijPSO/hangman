@@ -1,66 +1,65 @@
-const Hangman = function (word, remainingGuesses) {
-  this.word = word.toLowerCase().split('')
-  this.remainingGuesses = remainingGuesses
-  this.guessedLetters = []
-  this.status = 'playing'
-}
 
-Hangman.prototype.calculateStatus = function () {
-  const finished = this.word.every((letter) => this.guessedLetters.includes(letter))
-
-  if (this.remainingGuesses === 0) {
-    this.status = 'failed'
-  } else if (finished) {
-    this.status = 'finished'
-  } else {
-    this.status = 'playing'
+class Hangman {
+  constructor(word, remainingGuesses) {
+    this.word = word.toLowerCase().split('')
+    this.remainingGuesses = remainingGuesses
+    this.guessedLetters = []
+    this.gameStatus = 'playing'
   }
-}
-
-Hangman.prototype.getStatusMessage = function () {
-  switch(this.status) {
-    case 'playing':
-    return `Left guesses: ${this.remainingGuesses}`
-    
-    case 'finished':
-    return `Great work! You guesss the word - "${this.word.join('')}" `
-
-    case 'failed':
-    return `Nicetry try!  You should try once again! The word was: "${this.word.join('')}" `  
-  }
-}
-
-Hangman.prototype.getPuzzle = function () {
-  let puzzle = ''
-
-  this.word.forEach((letter) => {
-    if (this.guessedLetters.includes(letter) || letter === ' ') {
-      puzzle += letter
+  
+  calculateStatus() {
+    const finished = this.word.every((letter) => this.guessedLetters.includes(letter))
+    if (this.remainingGuesses === 0) {
+      this.gameStatus = 'failed'
+    } else if (finished) {
+      this.gameStatus = 'finished'
     } else {
-      puzzle += '*'
+      this.gameStatus = 'playing'
     }
-  })
+  }
 
-  return puzzle
+  getStatusMessage() {
+    switch(this.gameStatus) {
+      case 'playing':
+        return `Left guesses: ${this.remainingGuesses}`
+      
+      case 'finished':
+        return `Great work! You guesss the word - "${this.word.join('')}" `
+
+      case 'failed':
+        return `Nicetry try!  You should try once again! The word was: "${this.word.join('')}" `  
+    } 
+  }
+
+  getPuzzle() {
+    let puzzle = ''
+    this.word.forEach((letter) => {
+      if (this.guessedLetters.includes(letter) || letter === ' ') {
+        puzzle += letter
+      } else {
+        puzzle += '*'
+      }
+    })
+    return puzzle
+  }
+
+  makeGuess(guess) {
+    guess = guess.toLowerCase()
+    const isUnique = !this.guessedLetters.includes(guess)
+    const isBadGuess = !this.word.includes(guess)
+  
+    if (this.gameStatus !== 'playing') {
+      return
+    }
+  
+    if (isUnique) {
+      this.guessedLetters.push(guess)
+    }
+  
+    if (isUnique && isBadGuess) {
+      this.remainingGuesses--
+    }
+
+    this.calculateStatus()
+  }
 }
-
-Hangman.prototype.makeGuess = function (guess) {
-  guess = guess.toLowerCase()
-  const isUnique = !this.guessedLetters.includes(guess)
-  const isBadGuess = !this.word.includes(guess)
-
-  if (this.status !== 'playing') {
-    return
-  }
-
-  if (isUnique) {
-    this.guessedLetters.push(guess)
-  }
-
-  if (isUnique && isBadGuess) {
-    this.remainingGuesses--
-  }
-
-  this.calculateStatus()
-}
-
