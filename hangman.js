@@ -18,7 +18,7 @@ class Hangman {
     }
   }
 
-  getStatusMessage() {
+  get statusMessage() {
     switch(this.gameStatus) {
       case 'playing':
         return `Left guesses: ${this.remainingGuesses}`
@@ -31,7 +31,7 @@ class Hangman {
     } 
   }
 
-  getPuzzle() {
+  get puzzle() {
     let puzzle = ''
     this.word.forEach((letter) => {
       if (this.guessedLetters.includes(letter) || letter === ' ') {
