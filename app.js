@@ -30,7 +30,7 @@ window.addEventListener('keypress', function(e) {
 	guessesEl.textContent = game1.statusMessage
 })
 
-getPuzzle((error, puzzle) => {
+getPuzzle('2',(error, puzzle) => {
 	if(error) {
 		console.log(`Error is ${error}}`)
 	} else {
@@ -38,6 +38,13 @@ getPuzzle((error, puzzle) => {
 	}
 })
 
+getCountry('UA', (error, country) => {
+	if(error) {
+		console.log(error)
+	} else {
+		console.log(`Country name: ${country.name.common}`)
+	}
+})
 
 // Making http request 
 // const request = new XMLHttpRequest()
