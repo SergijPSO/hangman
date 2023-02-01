@@ -21,9 +21,6 @@ const game1 = new Hangman('Request', 5)
 puzzleEl.textContent = game1.puzzle
 guessesEl.textContent = game1.statusMessage
 
-console.log(game1.statusMessage)
-console.log(game1.gameStatus)
-
 window.addEventListener('keypress', function(e) {
 	const guess = String.fromCharCode(e.charCode)
 	game1.makeGuess(guess)
@@ -31,14 +28,14 @@ window.addEventListener('keypress', function(e) {
 	guessesEl.textContent = game1.statusMessage
 })
 
-getPuzzle('2').then((puzzle) => {
-	console.log(puzzle)
-}, (err) => {
+getPuzzle('2').then((data) => {
+	console.log(data)
+}).catch((err) => {
 	console.log(`Error: ${err}`)
 })
 
 getCountry('UA').then((country) => {
-	console.log(`Country name: ${country.name.common}`)
-}, (error) => {
-	console.log(`Error: ${error}`)
+	console.log(country.name.common)
+}).catch((err) => {
+	console.log(`Error: ${err}`)
 })
