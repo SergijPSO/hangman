@@ -4,8 +4,9 @@
 }
 
 body {
-  background: linear-gradient(76deg, #200120, #500550); 
+  background: linear-gradient(303deg,#6e086e,#020002); 
   height: 100vh;
+  overflow: hidden;
 }
 
 .app {
@@ -18,8 +19,9 @@ body {
   font-family: 'Roboto', sans-serif, bold;
   color: #fff;
 
-  &__title {
-    margin-bottom: 1.2em;
+  &__instruction {
+    margin: 1.2em 0;
+    font-size: 1.2em;
   }
 
   &__container {
@@ -53,9 +55,8 @@ body {
 
   &__guesses {
     width: 100%;
-    height: 3.875em;
+    min-height: 3.875em;
     max-width: 25em;
-    margin: 1.75em 0 2.125em;
     line-height: 1.6; 
   }
 
