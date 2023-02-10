@@ -10,25 +10,37 @@ body {
 
 .app {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 12px;
+  padding: .75em;
   height: 100%;
+  font-family: 'Roboto', sans-serif, bold;
+  color: #fff;
+
+  &__title {
+    margin-bottom: 1.2em;
+  }
 
   &__container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 60px 14px;
+    padding: 3.75em .875em;
     margin: 0 auto;
     width: 100%;
-    max-width: 422px;
+    max-width: 26.375em;
     box-sizing: border-box;
-    border: 3px solid rgba(255, 255, 255, .6);
-    border-radius: 12px;
-    font-family: 'Roboto', sans-serif, bold;
-    font-weight: 600;
-    color: #fff;
+    border: .188em solid rgba(255, 255, 255, .6);
+    border-radius: .75em;
+  }
+
+  &__puzzle {
+    font-size: 1.375em;
+    margin-top: .5em;
+    min-height: 1.375em;
+    text-transform: capitalize;
   }
 
   &__puzzle,
@@ -36,22 +48,24 @@ body {
   &__reset {
     font-size: 1.2em;
     text-align: center;
+    font-weight: 600;
   }
 
   &__guesses {
     width: 100%;
-    max-width: 400px;
-    margin: 34px 0;
+    height: 3.875em;
+    max-width: 25em;
+    margin: 1.75em 0 2.125em;
     line-height: 1.6; 
   }
 
   &__reset {
-    padding: 19px 27px;
+    padding: .75em .875em;
     background: none;
     cursor: pointer;
     outline: none;
-    border: 2px solid white;
-    border-radius: 8px;
+    border: .125em solid white;
+    border-radius: .5em;
     color: #fff;
     &:active,
     &:hover {
