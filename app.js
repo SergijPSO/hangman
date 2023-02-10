@@ -29,9 +29,21 @@ const render = () => {
 	guessesEl.textContent = game1.statusMessage
 }
 
+function findUnique(str){
+	let uniq = '';	 
+	for(let i = 0; i < str.length; i++){
+		if(uniq.includes(str[i]) === false){
+			uniq += str[i]
+		}
+	}
+	return uniq.length
+}
+
 const startGame = async () => {
 	const puzzle = await getPuzzle('2')
-	game1 = new Hangman(puzzle, 5)
+	const strArr = puzzle.split('')
+	let guessesNumber = findUnique(strArr) - 3
+	game1 = new Hangman(puzzle, guessesNumber)
 	render()
 }
 

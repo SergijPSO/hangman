@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(76deg, #200120, #500550);
+  height: 100vh;
+}
+
+.app {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  height: 100%;
+}
+.app__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 14px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 422px;
+  box-sizing: border-box;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  font-family: "Roboto", sans-serif, bold;
+  font-weight: 600;
+  color: #fff;
+}
+.app__puzzle, .app__guesses, .app__reset {
+  font-size: 1.2em;
+  text-align: center;
+}
+.app__guesses {
+  width: 100%;
+  max-width: 400px;
+  margin: 34px 0;
+  line-height: 1.6;
+}
+.app__reset {
+  padding: 19px 27px;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  border: 2px solid white;
+  border-radius: 8px;
+  color: #fff;
+}
+.app__reset:active, .app__reset:hover {
+  opacity: 0.7;
+}
+
+/*# sourceMappingURL=styles.css.map */
