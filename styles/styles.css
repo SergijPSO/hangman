@@ -40,7 +40,6 @@ body {
   font-size: 1.375em;
   margin-top: 0.5em;
   min-height: 1.375em;
-  text-transform: capitalize;
 }
 .app__puzzle, .app__guesses, .app__reset {
   font-size: 1.2em;
